@@ -52,10 +52,8 @@ public class BookingHotel {
         bookedRoom1.setBooking(booking);
         bookedRoom2.setBooking(booking);
 
-        Set<BookedRoom> list = new HashSet<>();
-        list.add(bookedRoom1);
-        list.add(bookedRoom2);
-        booking.setListOfBookedRoom(list);
+        booking.setListOfBookedRoom(Set.of(bookedRoom1));
+        booking.setListOfBookedRoom(Set.of(bookedRoom2));
 //        booking.setListOfBookedRoom(Set.of(bookedRoom2));
 
 
