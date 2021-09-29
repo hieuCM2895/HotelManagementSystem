@@ -52,8 +52,9 @@ public class BookingHotel {
         bookedRoom1.setBooking(booking);
         bookedRoom2.setBooking(booking);
 
-        booking.setListOfBookedRoom(Set.of(bookedRoom1));
         booking.setListOfBookedRoom(Set.of(bookedRoom2));
+        booking.setListOfBookedRoom(Set.of(bookedRoom1));
+
 //        booking.setListOfBookedRoom(Set.of(bookedRoom2));
 
 

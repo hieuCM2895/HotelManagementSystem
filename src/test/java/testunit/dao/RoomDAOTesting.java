@@ -17,7 +17,7 @@ public class RoomDAOTesting {
 
         Room room = new Room();
         room.setDescription("Phòng 48 m2, đầy đủ tiện nghi");
-        room.setName("102A");
+        room.setName("103A");
         room.setType("twink");
         room.setHotel(hotelDAO.findById(Hotel.class, 1));
         Assertions.assertTrue(roomDAO.save(room));
