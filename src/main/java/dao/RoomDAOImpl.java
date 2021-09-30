@@ -73,6 +73,35 @@ public class RoomDAOImpl extends AbstractDAO<Room, Object> implements IRoomDAO {
     }
 
     @Override
+    public List<Room> checkRoomEmptyByNameHotel(Date checkin, Date checkout, String hotelName) {
+
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Room> criteriaQuery = builder.createQuery(Room.class);
+
+        Root<Room> root = criteriaQuery.from(Room.class);
+
+        Subquery<Long> sub1 = criteriaQuery.subquery(Long.class);
+        Root<Hotel> subRoot1 = sub1.from(Hotel.class);
+
+        sub1.select(subRoot1.get("hotelId"));
+        sub1.where(builder.equal(subRoot1.get("hotelName"), hotelName));
+
+        Subquery<Long> sub2 = criteriaQuery.subquery(Long.class);
+        Root<BookedRoom> subRoot2 = sub2.from(BookedRoom.class);
+
+        sub2.select(subRoot2.get("room").get("roomId"));
+        sub2.where(builder.or(builder.between(subRoot2.get("checkin"), checkin, checkout),
+                builder.between(subRoot2.get("checkout"),checkin, checkout)));
+
+        criteriaQuery.select(root).where(builder.and(builder.equal(root.get("hotel").get("hotelId"), sub1)),
+                builder.not(builder.in(root.get("roomId")).value(sub2)));
+
+        return session.createQuery(criteriaQuery).getResultList();
+
+    }
+
+    @Override
     public List<Room> checkRoomEmptyByPrice(Date checkin, Date checkout, String location, int minPrice, int maxPrice) {
 
         Session session = HibernateUtils.getSessionFactory().openSession();

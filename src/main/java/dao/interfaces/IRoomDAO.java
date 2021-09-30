@@ -29,6 +29,16 @@ public interface IRoomDAO {
     List<Room> checkRoomEmptyByHotel(Date checkin, Date checkout, Hotel hotel);
 
     /**
+     * Find available rooms to book by name hotel and check in, check out
+     *
+     * @param checkin
+     * @param checkout
+     * @param hotelName
+     * @return List<Room>
+     */
+    List<Room> checkRoomEmptyByNameHotel(Date checkin, Date checkout, String hotelName);
+
+    /**
      * Find available rooms to book by location and check in, check out and range price
      *
      * @param checkin

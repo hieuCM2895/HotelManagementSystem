@@ -110,7 +110,7 @@ public class RoomService implements IRoomService {
     @Override
     public List<Room> searchRoomByType(String type, int minPrice, int maxPrice) {
 
-        List<Room> listOfRoom = roomDAO.searchRoomByStar(type, minPrice, maxPrice);
+        List<Room> listOfRoom = roomDAO.searchRoomByType(type, minPrice, maxPrice);
         List<Room> listRoomDTO = new ArrayList<>();
         for (Room room : listOfRoom) {
             listRoomDTO.add(roomDTO.roomDTO(room));

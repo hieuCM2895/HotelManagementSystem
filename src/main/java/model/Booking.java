@@ -115,5 +115,6 @@ public class Booking implements Serializable {
 
     public void setTotalAmount(float totalAmount) {
         this.totalAmount = totalAmount;
+        this.deposit = (totalAmount / 2);
     }
 }

@@ -120,7 +120,7 @@ public class BookedRoom implements Serializable {
         this.amount = amount;
     }
 
-    public boolean isCheckIn() {
+    public boolean getIsCheckIn() {
         return isCheckIn;
     }
 

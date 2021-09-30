@@ -3,12 +3,14 @@ package service;
 import dao.BookedRoomDAOImpl;
 import dao.HotelDAOImpl;
 import dao.RoomDAOImpl;
+import dto.BookedRoomDTO;
 import model.BookedRoom;
 import model.Hotel;
 import model.Room;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +19,7 @@ public class BookedRoomService {
     private static final BookedRoomDAOImpl bookedRoomDAO = new BookedRoomDAOImpl();
     private static final RoomDAOImpl roomDAO = new RoomDAOImpl();
     private static final HotelDAOImpl hotelDAO = new HotelDAOImpl();
+    private static final BookedRoomDTO bookedRoomDTO = new BookedRoomDTO();
 
     public boolean insertBookedRoom(BookedRoom bookedRoom) {
 
@@ -45,18 +48,24 @@ public class BookedRoomService {
 
     public List<BookedRoom> findBookedRoomByTime(Date checkin, Date checkout) {
 
-        return bookedRoomDAO.checkRoomBookingByTime(checkin, checkout);
+        List<BookedRoom> listDTO = new ArrayList<>();
+        List<BookedRoom> bookedRoomList = bookedRoomDAO.checkRoomBookingByTime(checkin, checkout);
+        for (BookedRoom bookedRoom : bookedRoomList) {
+            listDTO.add(bookedRoomDTO.bookedRoomDTO(bookedRoom));
+        }
+        return listDTO;
 
     }
 
     public static void main(String[] args) throws ParseException {
+
         String dateFormat = "yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
         Room room = roomDAO.findById(Room.class, 1);
-        boolean list = bookedRoomDAO.checkTimeBooking(simpleDateFormat.parse("2021-02-09"), simpleDateFormat.parse("2021-02-11"), room);
-        System.out.println(list);
+//        boolean list = bookedRoomDAO.checkTimeBooking(simpleDateFormat.parse("2021-02-10"), simpleDateFormat.parse("2021-02-11"), room);
+//        System.out.println(list);
         Hotel hotel = hotelDAO.findById(Hotel.class, 1);
-        List<Room> list1 = roomDAO.checkRoomEmptyByHotel(simpleDateFormat.parse("2021-02-10"),simpleDateFormat.parse("2021-02-12"), hotel);
+        List<Room> list1 = roomDAO.checkRoomEmptyByHotel(simpleDateFormat.parse("2021-02-10"),simpleDateFormat.parse("2021-02-11"), hotel);
         for (Room room1 : list1) {
             System.out.println(room1);
         }
