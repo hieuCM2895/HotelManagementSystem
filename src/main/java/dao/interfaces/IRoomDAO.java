@@ -1,8 +1,7 @@
-package dao;
+package dao.interfaces;
 
 import model.Hotel;
 import model.Room;
-import org.apache.poi.ss.formula.functions.T;
 
 import java.util.Date;
 import java.util.List;

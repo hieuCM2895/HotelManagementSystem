@@ -3,9 +3,12 @@ package service.interfaces;
 import model.Hotel;
 import model.Room;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IRoomService {
+
+    Room findRoomById(int roomId);
 
     boolean insertNewRoom(Room room);
 
@@ -15,10 +18,18 @@ public interface IRoomService {
 
     List<Room> findAllRoom();
 
-    List<Room> findRoomByHotel(Hotel hotel);
+    List<Room> checkRoomEmptyByLocation(Date checkin, Date checkout, String location);
 
-    List<Room> findRoomByLocation(String location);
+    List<Room> checkRoomEmptyByHotel(Date checkin, Date checkout, Hotel hotel);
 
-    List<Room> findRoomByRangePrice(String location, int minPrice, int maxPrice);
+    List<Room> checkRoomEmptyByPrice(Date checkin, Date checkout, String location, int minPrice, int maxPrice);
+
+    List<Room> checkRoomEmptyByStar(Date checkin, Date checkout, String location, int star);
+
+    List<Room> searchRoomByPrice(String location, int minPrice, int maxPrice);
+
+    List<Room> searchRoomByType(String type, int minPrice, int maxPrice);
+
+    List<Room> searchRoomByStar(String star, int minPrice, int maxPrice);
 
 }

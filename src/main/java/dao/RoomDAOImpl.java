@@ -1,5 +1,6 @@
 package dao;
 
+import dao.interfaces.IRoomDAO;
 import model.BookedRoom;
 import model.Hotel;
 import model.Room;

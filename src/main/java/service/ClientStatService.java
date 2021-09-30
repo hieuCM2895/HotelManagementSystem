@@ -4,14 +4,15 @@ import dao.ClientDAOImpl;
 import dao.ClientStatDAOImpl;
 import model.Client;
 import model.ClientStat;
+import service.interfaces.IClientStatService;
 
 import java.util.List;
 
-public class ClientStatService implements IClientStatService{
+public class ClientStatService implements IClientStatService {
 
-    private ClientStatDAOImpl clientStatDAO = new ClientStatDAOImpl();
-    private ClientDAOImpl clientDAO = new ClientDAOImpl();
-    private ClientService clientService = new ClientService();
+    private final ClientStatDAOImpl clientStatDAO = new ClientStatDAOImpl();
+    private final ClientDAOImpl clientDAO = new ClientDAOImpl();
+    private final ClientService clientService = new ClientService();
 
     @Override
     public boolean saveNewClientStat(ClientStat clientStat) {
@@ -45,8 +46,7 @@ public class ClientStatService implements IClientStatService{
             }
         }
 
-
-        return listOfStat.size()>1;
+        return listOfStat.size() >= 1;
 
     }
 

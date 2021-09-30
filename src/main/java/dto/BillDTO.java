@@ -4,18 +4,18 @@ import model.Bill;
 
 public class BillDTO {
 
-    public Bill tranferObjectBill(Bill bill) {
+    public Bill billDTO(Bill bill) {
 
-        Bill billtranfer = new Bill();
+        Bill billDTO = new Bill();
 
-        billtranfer.setBillId(bill.getBillId());
-        billtranfer.setBooking(bill.getBooking());
-        billtranfer.setNote(bill.getNote());
-        billtranfer.setPaymentDate(bill.getPaymentDate());
-        billtranfer.setTotalAmount(bill.getTotalAmount());
-        billtranfer.setUser(bill.getUser());
-        billtranfer.setPaymentType(bill.getPaymentType());
+        billDTO.setBillId(bill.getBillId());
+        billDTO.setBooking(bill.getBooking());
+        billDTO.setNote(bill.getNote());
+        billDTO.setPaymentDate(bill.getPaymentDate());
+        billDTO.setTotalAmount(bill.getTotalAmount());
+        billDTO.setUser(bill.getUser());
+        billDTO.setPaymentType(bill.getPaymentType());
 
-        return billtranfer;
+        return billDTO;
     }
 }

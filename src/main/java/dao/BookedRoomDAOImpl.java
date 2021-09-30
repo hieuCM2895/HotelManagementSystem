@@ -1,5 +1,6 @@
 package dao;
 
+import dao.interfaces.IBookedRoomDAO;
 import model.BookedRoom;
 import model.Room;
 import org.hibernate.Session;
@@ -9,7 +10,7 @@ import javax.persistence.criteria.*;
 import java.util.Date;
 import java.util.List;
 // Hiếu
-public class BookedRoomDAOImpl extends AbstractDAO<BookedRoom, Object> implements IBookedRoomDAO{
+public class BookedRoomDAOImpl extends AbstractDAO<BookedRoom, Object> implements IBookedRoomDAO {
 
     @Override
     public boolean checkTimeBooking(Date checkin, Date checkout, Room room) {
