@@ -1,6 +1,8 @@
 package model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 @Entity
@@ -21,9 +23,11 @@ public class Client implements Serializable {
     @Column(name = "address", nullable = false, length = 200)
     private String address;
 
+    @Pattern(regexp="(^$|[0-9]{10})", message = "Invalid number phone")
     @Column(name = "tell", nullable = false, length = 50, unique = true)
     private String tell;
 
+    @Email
     @Column(name = "email", nullable = false, length = 50, unique = true)
     private String email;
 

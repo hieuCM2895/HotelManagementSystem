@@ -1,10 +1,11 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "service_stat")
-public class ServiceStat {
+public class ServiceStat implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +22,7 @@ public class ServiceStat {
     @Column(name = "revenue")
     private float revenue;
 
-    public ServiceStat() {
-
-    }
+    public ServiceStat() {}
 
     public int getServiceStatId() {
         return serviceStatId;

@@ -91,8 +91,13 @@ public class Hotel implements Serializable {
 
     @Override
     public String toString() {
-        System.out.println("         -------Hotel---------");
-        System.out.println("id       |         name         |   star    |        address        |      city       |       description");
-        return hotelId + "        |     " + hotelName + "    |  " + starLevel + "  |   " + city + "   |   " + city + "  | " + description;
+        return "Hotel{" +
+                "hotelId=" + hotelId +
+                ", hotelName='" + hotelName + '\'' +
+                ", starLevel=" + starLevel +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", description='" + description + '\'' +
+                '}';
     }
 }

@@ -1,10 +1,11 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "room_stat")
-public class RoomStat {
+public class RoomStat implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +22,7 @@ public class RoomStat {
     @Column(name = "revenue")
     private float revenue;
 
-    public RoomStat() {
-
-    }
+    public RoomStat() {}
 
     public int getRoomStatId() {
         return roomStatId;

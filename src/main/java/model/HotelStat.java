@@ -1,10 +1,11 @@
 package model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "hotel_stat")
-public class HotelStat {
+public class HotelStat implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,9 +22,7 @@ public class HotelStat {
     @Column(name = "fillrate")
     private float fillrate;
 
-    public HotelStat() {
-
-    }
+    public HotelStat() {}
 
     public int getHotelStatId() {
         return hotelStatId;

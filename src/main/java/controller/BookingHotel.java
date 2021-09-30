@@ -3,6 +3,7 @@ package controller;
 import model.*;
 import service.*;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
@@ -35,6 +36,11 @@ public class BookingHotel {
         bookedRoom1.setIsCheckIn(true);
         bookedRoom1.setRoom(room1);
 
+//        if (bookedRoomService.checkInAndCheckOutTime(bookedRoom1.getCheckin(), bookedRoom1.getRoom())) {
+//            System.out.println("Phòng đã đặt");
+//            return;
+//        }
+
         BookedRoom bookedRoom2 = new BookedRoom();
         Room room2 = roomService.findRoomById(2);
         bookedRoom2.setCheckin(simpleDateFormat.parse("2021-02-12"));
@@ -52,25 +58,25 @@ public class BookingHotel {
         bookedRoom1.setBooking(booking);
         bookedRoom2.setBooking(booking);
 
-        booking.setListOfBookedRoom(Set.of(bookedRoom2));
-        booking.setListOfBookedRoom(Set.of(bookedRoom1));
-
-//        booking.setListOfBookedRoom(Set.of(bookedRoom2));
-
+        bookedRoomService.insertBookedRoom(bookedRoom1);
+        bookedRoomService.insertBookedRoom(bookedRoom2);
 
         boolean result2 = bookingService.insertNewBooking(booking);
         if (result2) System.out.println("Đặt phòng thành công");
-//        boolean result1 = bookedRoomService.insertBookedRoom(bookedRoom);
-//        if (result1) System.out.println("Nhận phòng thành công");
 
 
     }
 
-    public static void main(String[] args) {
-        try {
-            registerBookingForClient();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) throws ParseException {
+//        try {
+//            registerBookingForClient();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        Room room = roomService.findRoomById(1);
+//        String dateFormat = "yyyy-MM-dd";
+//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
+//        boolean result = bookedRoomService.checkInAndCheckOutTime(simpleDateFormat.parse("2021-02-12"), );
+//        System.out.println(result);
     }
 }

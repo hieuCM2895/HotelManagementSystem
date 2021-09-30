@@ -26,11 +26,11 @@ public class BookedRoom implements Serializable {
     private Set<UsedService> listOfUsedService;
 
     @Column(name = "checkin", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date checkin;
 
     @Column(name = "checkout", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date checkout;
 
     @Column(name = "price", nullable = false)
@@ -125,5 +125,20 @@ public class BookedRoom implements Serializable {
 
     public void setIsCheckIn(boolean checkIn) {
         isCheckIn = checkIn;
+    }
+
+    @Override
+    public String toString() {
+        return "BookedRoom{" +
+                "bookedRoomId=" + bookedRoomId +
+                ", booking=" + booking +
+                ", room=" + room +
+                ", checkin=" + checkin +
+                ", checkout=" + checkout +
+                ", price=" + price +
+                ", note='" + note + '\'' +
+                ", amount=" + amount +
+                ", isCheckIn=" + isCheckIn +
+                '}';
     }
 }

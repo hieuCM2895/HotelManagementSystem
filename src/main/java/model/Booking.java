@@ -24,7 +24,7 @@ public class Booking implements Serializable {
     private Client client;
 
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<BookedRoom> listOfBookedRoom = new HashSet<>();
+    private Set<BookedRoom> listOfBookedRoom;
 
     @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<Bill> listOfBill;
@@ -73,7 +73,7 @@ public class Booking implements Serializable {
     }
 
     public void setListOfBookedRoom(Set<BookedRoom> listOfBookedRoom) {
-        this.listOfBookedRoom.addAll(listOfBookedRoom);
+        this.listOfBookedRoom = listOfBookedRoom;
     }
 
     public Set<Bill> getListOfBill() {
