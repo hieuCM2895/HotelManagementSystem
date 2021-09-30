@@ -11,6 +11,7 @@ import model.Room;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -22,8 +23,11 @@ public class BookedRoomService {
     private static final BookedRoomDTO bookedRoomDTO = new BookedRoomDTO();
 
     public boolean insertBookedRoom(BookedRoom bookedRoom) {
-
         return bookedRoomDAO.save(bookedRoom);
+    }
+
+    public boolean updateBookedRoom(BookedRoom bookedRoom) {
+        return bookedRoomDAO.update(bookedRoom);
     }
 
     public boolean checkInAndCheckOutTime(Date checkin, Date checkout) {
@@ -54,6 +58,24 @@ public class BookedRoomService {
             listDTO.add(bookedRoomDTO.bookedRoomDTO(bookedRoom));
         }
         return listDTO;
+
+    }
+
+    public List<BookedRoom> insertBookedRoom(List<Room> listRoom, Date checkin, Date checkout) {
+
+        List<BookedRoom> listOfBookedRoom = new ArrayList<>();
+        for (Room room : listRoom) {
+            BookedRoom bookedRoom = new BookedRoom();
+            bookedRoom.setCheckin(checkin);
+            bookedRoom.setCheckout(checkout);
+            bookedRoom.setPrice(room.getPrice());
+            bookedRoom.setAmount(0);
+            bookedRoom.setIsCheckIn(true);
+            bookedRoom.setRoom(room);
+            insertBookedRoom(bookedRoom);
+            listOfBookedRoom.add(bookedRoom);
+        }
+        return listOfBookedRoom;
 
     }
 

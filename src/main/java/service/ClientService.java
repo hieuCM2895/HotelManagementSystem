@@ -12,7 +12,6 @@ public class ClientService {
     public Client findClientById(int clientId) {
 
         return clientDAO.findById(Client.class, clientId);
-
     }
 
     public boolean updateNewClient(Client client) {
@@ -21,13 +20,13 @@ public class ClientService {
     }
 
     public static void main(String[] args) {
-//        List<Object[]> list = clientDAO.findProfitFromCustomers();
-//        for (Object[] objects : list) {
-//            System.out.println("------ClientId-------TotalAmount-------Count-Booked");
-//            for (Object object : objects) {
-//                System.out.print("       " + object + "       ");
-//            }
-//            System.out.println();
-//        }
+        List<Object[]> list = clientDAO.findProfitFromCustomers();
+        for (Object[] objects : list) {
+            System.out.println("------ClientId-------TotalAmount-------Count-Booked");
+            for (Object object : objects) {
+                System.out.print("       " + object + "       ");
+            }
+            System.out.println();
+        }
     }
 }

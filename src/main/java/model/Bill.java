@@ -25,15 +25,26 @@ public class Bill implements Serializable {
     private Date paymentDate;
 
     @Column(name = "total_amount", nullable = false)
-    private float TotalAmount;
+    private float totalAmount;
 
     @Column(name = "payment_type", nullable = false, length = 50)
     private String paymentType;
+
+    @Column(name = "prepay", nullable = false, length = 50)
+    private float prepay;
 
     @Column(name = "note", length = 200)
     private String note;
 
     public Bill() {
+    }
+
+    public float getPrepay() {
+        return prepay;
+    }
+
+    public void setPrepay(float prepay) {
+        this.prepay = prepay;
     }
 
     public int getBillId() {
@@ -69,11 +80,11 @@ public class Bill implements Serializable {
     }
 
     public float getTotalAmount() {
-        return TotalAmount;
+        return this.totalAmount;
     }
 
     public void setTotalAmount(float totalAmount) {
-        TotalAmount = totalAmount;
+        this.totalAmount = totalAmount;
     }
 
     public String getPaymentType() {
@@ -90,5 +101,17 @@ public class Bill implements Serializable {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    @Override
+    public String toString() {
+        return "Bill{" +
+                "billId=" + billId +
+                ", user=" + user +
+                ", paymentDate=" + paymentDate +
+                ", TotalAmount=" + totalAmount +
+                ", paymentType='" + paymentType + '\'' +
+                ", note='" + note + '\'' +
+                '}';
     }
 }

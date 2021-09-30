@@ -2,15 +2,20 @@ package service;
 
 import dao.BookingDAOImpl;
 import dto.BookingDTO;
+import model.BookedRoom;
 import model.Booking;
+import model.Client;
+import model.User;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class BookingService {
 
     private final BookingDAOImpl bookingDAO = new BookingDAOImpl();
     private final BookingDTO bookingDTO = new BookingDTO();
+    private final BookedRoomService bookedRoomService = new BookedRoomService();
 
     public boolean insertNewBooking(Booking booking) {
         return bookingDAO.save(booking);
@@ -35,6 +40,65 @@ public class BookingService {
 
     }
 
+    public Booking insertBookingByBookedRoom(List<BookedRoom> listBookedRoom, Client client, User user, String note) {
 
+        float totalAmount = 0;
+
+        for (BookedRoom bookedRoom : listBookedRoom) {
+            totalAmount += bookedRoom.getPrice() + bookedRoom.getAmount();
+        }
+
+        Booking booking = new Booking();
+        booking.setBookingDate(new Date());
+        booking.setNote(note);
+        booking.setTotalAmount(totalAmount);
+        booking.setDeposit(totalAmount / 2);
+        booking.setClient(client);
+        booking.setUser(user);
+
+        boolean result = insertNewBooking(booking);
+        for (BookedRoom bookedRoom : listBookedRoom) {
+            bookedRoom.setBooking(booking);
+            bookedRoomService.updateBookedRoom(bookedRoom);
+        }
+        if (result) {
+            return booking;
+        }
+        return null;
+
+    }
+
+    public List<Booking> findBookingByClientName(String clientName) {
+
+        List<Booking> list = bookingDAO.findBookingByClientName(clientName);
+        List<Booking> listBookingDTO = new ArrayList<>();
+        for (Booking booking : list) {
+            listBookingDTO.add(bookingDTO.bookingDTO(booking));
+        }
+        return listBookingDTO;
+
+    }
+
+    public List<Booking> findBookingByUserName(String userName) {
+
+        List<Booking> list = bookingDAO.findBookingByUserName(userName);
+        List<Booking> listBookingDTO = new ArrayList<>();
+        for (Booking booking : list) {
+            listBookingDTO.add(bookingDTO.bookingDTO(booking));
+        }
+        return listBookingDTO;
+
+    }
+
+    public List<Booking> findBookingByDate(Date date) {
+
+        List<Booking> list = bookingDAO.findBookingByDate(date);
+        List<Booking> listBookingDTO = new ArrayList<>();
+        for (Booking booking : list) {
+            listBookingDTO.add(bookingDTO.bookingDTO(booking));
+        }
+        return listBookingDTO;
+
+    }
 
 }
