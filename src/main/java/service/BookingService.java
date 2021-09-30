@@ -5,10 +5,12 @@ import model.Booking;
 
 public class BookingService {
 
-    private BookingDAOImpl bookingDAO = new BookingDAOImpl();
+    private static BookingDAOImpl bookingDAO = new BookingDAOImpl();
 
     public boolean insertNewBooking(Booking booking) {
 
         return bookingDAO.save(booking);
     }
+
+
 }

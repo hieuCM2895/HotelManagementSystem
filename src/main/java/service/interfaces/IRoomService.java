@@ -1,4 +1,4 @@
-package service;
+package service.interfaces;
 
 import model.Hotel;
 import model.Room;

@@ -45,7 +45,8 @@ public class BookedRoom implements Serializable {
     @Column(name = "is_checkin")
     private boolean isCheckIn;
 
-    public BookedRoom() {}
+    public BookedRoom() {
+    }
 
     public int getBookedRoomId() {
         return bookedRoomId;

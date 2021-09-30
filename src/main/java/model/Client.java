@@ -23,7 +23,7 @@ public class Client implements Serializable {
     @Column(name = "address", nullable = false, length = 200)
     private String address;
 
-    @Pattern(regexp="(^$|[0-9]{10})", message = "Invalid number phone")
+    @Pattern(regexp = "(^$|[0-9]{10})", message = "Invalid number phone")
     @Column(name = "tell", nullable = false, length = 50, unique = true)
     private String tell;
 
@@ -34,7 +34,8 @@ public class Client implements Serializable {
     @Column(name = "note", length = 200)
     private String note;
 
-    public Client() {}
+    public Client() {
+    }
 
     public int getClientId() {
         return clientId;

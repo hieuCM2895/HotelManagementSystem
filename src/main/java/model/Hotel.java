@@ -31,7 +31,8 @@ public class Hotel implements Serializable {
     @Column(name = "description", length = 200)
     private String description;
 
-    public Hotel() {}
+    public Hotel() {
+    }
 
     public int getHotelId() {
         return hotelId;

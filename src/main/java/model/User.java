@@ -24,7 +24,8 @@ public class User implements Serializable {
     @Column(name = "position", nullable = false, length = 50)
     private String position;
 
-    public User() {}
+    public User() {
+    }
 
     public int getUserId() {
         return userId;

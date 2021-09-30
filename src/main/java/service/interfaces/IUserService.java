@@ -1,6 +1,5 @@
-package service;
+package service.interfaces;
 
-import model.Client;
 import model.User;
 
 import java.util.List;

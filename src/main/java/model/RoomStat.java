@@ -22,7 +22,8 @@ public class RoomStat implements Serializable {
     @Column(name = "revenue")
     private float revenue;
 
-    public RoomStat() {}
+    public RoomStat() {
+    }
 
     public int getRoomStatId() {
         return roomStatId;

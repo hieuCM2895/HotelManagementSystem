@@ -22,7 +22,8 @@ public class ServiceStat implements Serializable {
     @Column(name = "revenue")
     private float revenue;
 
-    public ServiceStat() {}
+    public ServiceStat() {
+    }
 
     public int getServiceStatId() {
         return serviceStatId;

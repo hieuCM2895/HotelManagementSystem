@@ -22,7 +22,8 @@ public class HotelStat implements Serializable {
     @Column(name = "fillrate")
     private float fillrate;
 
-    public HotelStat() {}
+    public HotelStat() {
+    }
 
     public int getHotelStatId() {
         return hotelStatId;

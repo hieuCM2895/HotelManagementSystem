@@ -1,13 +1,11 @@
 package dao;
 
 import model.BookedRoom;
-import model.Hotel;
 import model.Room;
 import org.hibernate.Session;
 import util.HibernateUtils;
 
 import javax.persistence.criteria.*;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 // Hiếu

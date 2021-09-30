@@ -34,7 +34,8 @@ public class Room implements Serializable {
     @Column(name = "description", length = 200)
     private String description;
 
-    public Room() {}
+    public Room() {
+    }
 
     public int getRoomId() {
         return roomId;

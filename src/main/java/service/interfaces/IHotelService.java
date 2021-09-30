@@ -1,7 +1,6 @@
-package service;
+package service.interfaces;
 
 import model.Hotel;
-import model.User;
 
 import java.util.List;
 

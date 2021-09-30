@@ -42,7 +42,8 @@ public class Booking implements Serializable {
     @Column(name = "note", length = 200)
     private String note;
 
-    public Booking() {}
+    public Booking() {
+    }
 
     public int getBookingId() {
         return bookingId;

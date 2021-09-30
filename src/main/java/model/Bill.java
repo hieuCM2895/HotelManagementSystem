@@ -33,7 +33,8 @@ public class Bill implements Serializable {
     @Column(name = "note", length = 200)
     private String note;
 
-    public Bill() {}
+    public Bill() {
+    }
 
     public int getBillId() {
         return billId;

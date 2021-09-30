@@ -25,7 +25,8 @@ public class Service implements Serializable {
     @Column(name = "price", nullable = false)
     private float price;
 
-    public Service() {}
+    public Service() {
+    }
 
     public int getServiceId() {
         return serviceId;

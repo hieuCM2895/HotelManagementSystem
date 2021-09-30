@@ -29,7 +29,8 @@ public class UsedService implements Serializable {
     @Column(name = "total_amount", nullable = false)
     private float totalAmount;
 
-    public UsedService() {}
+    public UsedService() {
+    }
 
     public int getUsedServiceId() {
         return usedServiceId;
