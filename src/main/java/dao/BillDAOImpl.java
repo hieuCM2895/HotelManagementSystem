@@ -1,7 +1,6 @@
 package dao;
 
 import model.Bill;
-import model.BookedRoom;
 import org.hibernate.Session;
 import util.HibernateUtils;
 

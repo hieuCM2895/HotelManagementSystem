@@ -32,4 +32,6 @@ public interface IRoomService {
 
     List<Room> searchRoomByStar(String star, int minPrice, int maxPrice);
 
+    List<Room> checkRoomEmptyByNameHotel(Date checkin, Date checkout, String hotelName);
+
 }

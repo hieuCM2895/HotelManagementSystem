@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import util.HibernateUtils;
 
 import javax.persistence.criteria.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -212,6 +213,36 @@ public class RoomDAOImpl extends AbstractDAO<Room, Object> implements IRoomDAO {
         Predicate roomAndDate = builder.and(conditionDate1, conditionDate2);
         criteriaQuery.select(root).where(builder.and(roomAndDate, conditionRoom));
         return session.createQuery(criteriaQuery).getResultList();
+
+    }
+
+    public static List<Room> findRoomByListName(List<String> listOfNameRoom) {
+
+        List<Room> listOfRoom = new ArrayList<>();
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Room> criteriaQuery = builder.createQuery(Room.class);
+
+        Root<Room> root = criteriaQuery.from(Room.class);
+        for (String nameRoom : listOfNameRoom) {
+            criteriaQuery.select(root).where(builder.like(root.get("name"), nameRoom));
+            List<Room> list = session.createQuery(criteriaQuery).getResultList();
+            listOfRoom.addAll(list);
+        }
+
+        return listOfRoom;
+
+    }
+
+    public static void main(String[] args) {
+
+        List<String> list = new ArrayList<>();
+        list.add("103A");
+        list.add("102A");
+        List<Room> listOfRoom = findRoomByListName(list);
+        for (Room room : listOfRoom) {
+            System.out.println(room);
+        }
 
     }
 

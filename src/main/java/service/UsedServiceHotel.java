@@ -8,6 +8,7 @@ import model.UsedService;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class UsedServiceHotel {
 
@@ -37,20 +38,30 @@ public class UsedServiceHotel {
 
     }
 
-    public List<UsedService> insertUsedServiceByListService(List<Service> listOfService, int quantity, BookedRoom bookedRoom) {
+    public List<UsedService> insertUsedServiceByListService(Map<Service, Integer> listOfService, BookedRoom bookedRoom) {
 
         List<UsedService> listOfUsedService = new ArrayList<>();
-        for (Service service : listOfService) {
+        for (Map.Entry<Service, Integer> entry : listOfService.entrySet()) {
             UsedService usedService = new UsedService();
-            usedService.setService(service);
+            usedService.setService(entry.getKey());
             usedService.setBookedRoom(bookedRoom);
-            usedService.setPrice(service.getPrice());
-            usedService.setQuantity(quantity);
-            usedService.setTotalAmount(service.getPrice() * quantity);
+            usedService.setPrice(entry.getKey().getPrice());
+            usedService.setQuantity(entry.getValue());
+            usedService.setTotalAmount(entry.getKey().getPrice() * entry.getValue());
             insertUsedService(usedService);
             listOfUsedService.add(usedService);
         }
         return listOfUsedService;
+
+    }
+
+    public float calculationAmountByUsedService(List<UsedService> listOfService) {
+
+        float amount = 0;
+        for (UsedService usedService : listOfService) {
+            amount += usedService.getTotalAmount();
+        }
+        return amount;
 
     }
 }

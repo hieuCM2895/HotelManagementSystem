@@ -60,10 +60,10 @@ public class BookedRoomService {
 
     }
 
-    public List<BookedRoom> insertBookedRoom(List<Room> listRoom, Date checkin, Date checkout) {
+    public List<BookedRoom> insertBookedRoomByTime(List<Room> listOfRoom, Date checkin, Date checkout) {
 
         List<BookedRoom> listOfBookedRoom = new ArrayList<>();
-        for (Room room : listRoom) {
+        for (Room room : listOfRoom) {
             BookedRoom bookedRoom = new BookedRoom();
             bookedRoom.setCheckin(checkin);
             bookedRoom.setCheckout(checkout);
@@ -78,6 +78,8 @@ public class BookedRoomService {
 
     }
 
+//    public
+
     public static void main(String[] args) throws ParseException {
 
         String dateFormat = "yyyy-MM-dd";
@@ -86,7 +88,7 @@ public class BookedRoomService {
 //        boolean list = bookedRoomDAO.checkTimeBooking(simpleDateFormat.parse("2021-02-10"), simpleDateFormat.parse("2021-02-11"), room);
 //        System.out.println(list);
         Hotel hotel = hotelDAO.findById(Hotel.class, 1);
-        List<Room> list1 = roomDAO.checkRoomEmptyByHotel(simpleDateFormat.parse("2021-02-10"),simpleDateFormat.parse("2021-02-11"), hotel);
+        List<Room> list1 = roomDAO.checkRoomEmptyByHotel(simpleDateFormat.parse("2021-02-10"), simpleDateFormat.parse("2021-02-11"), hotel);
         for (Room room1 : list1) {
             System.out.println(room1);
         }

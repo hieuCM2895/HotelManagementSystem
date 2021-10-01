@@ -131,5 +131,15 @@ public class RoomService implements IRoomService {
 
     }
 
+    @Override
+    public List<Room> checkRoomEmptyByNameHotel(Date checkin, Date checkout, String hotelName) {
 
+        List<Room> listOfRoom = roomDAO.checkRoomEmptyByNameHotel(checkin, checkout, hotelName);
+        List<Room> listRoomDTO = new ArrayList<>();
+        for (Room room : listOfRoom) {
+            listRoomDTO.add(roomDTO.roomDTO(room));
+        }
+        return listOfRoom;
+
+    }
 }

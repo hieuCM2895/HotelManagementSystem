@@ -3,9 +3,10 @@ package controller;
 import model.*;
 import service.*;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class BookingHotel {
 
@@ -32,17 +33,15 @@ public class BookingHotel {
         listOfRoom.add(room1);
         listOfRoom.add(room2);
 
-        Service service = serviceHotel.findServiceById(1);
-
+//        Service service = serviceHotel.findServiceById(1);
 
         Date checkin = simpleDateFormat.parse("2021-02-12");
         Date checkout = simpleDateFormat.parse("2021-02-12");
 
-        List<BookedRoom> listBookedRoom = bookedRoomService.insertBookedRoom(listOfRoom, checkin, checkout);
+        List<BookedRoom> listBookedRoom = bookedRoomService.insertBookedRoomByTime(listOfRoom, checkin, checkout);
 
         Booking booking = bookingService.insertBookingByBookedRoom(listBookedRoom, client, user, "Đã Đặt");
         billService.insertBillByBooking(booking, user, "Chuyển khoản");
-
 
     }
 
