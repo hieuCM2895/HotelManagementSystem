@@ -2,6 +2,8 @@ package service;
 
 import dao.UsedServiceDAOImpl;
 import dto.UsedServiceDTO;
+import model.BookedRoom;
+import model.Service;
 import model.UsedService;
 
 import java.util.ArrayList;
@@ -35,5 +37,20 @@ public class UsedServiceHotel {
 
     }
 
+    public List<UsedService> insertUsedServiceByListService(List<Service> listOfService, int quantity, BookedRoom bookedRoom) {
 
+        List<UsedService> listOfUsedService = new ArrayList<>();
+        for (Service service : listOfService) {
+            UsedService usedService = new UsedService();
+            usedService.setService(service);
+            usedService.setBookedRoom(bookedRoom);
+            usedService.setPrice(service.getPrice());
+            usedService.setQuantity(quantity);
+            usedService.setTotalAmount(service.getPrice() * quantity);
+            insertUsedService(usedService);
+            listOfUsedService.add(usedService);
+        }
+        return listOfUsedService;
+
+    }
 }
