@@ -16,8 +16,8 @@ public class RoomStat implements Serializable {
     @JoinColumn(name = "room_id")
     private Room room;
 
-    @Column(name = "fillday")
-    private float fillday;
+    @Column(name = "fill_day")
+    private float fillDay;
 
     @Column(name = "revenue")
     private float revenue;
@@ -41,12 +41,12 @@ public class RoomStat implements Serializable {
         this.room = room;
     }
 
-    public float getFillday() {
-        return fillday;
+    public float getFillDay() {
+        return fillDay;
     }
 
-    public void setFillday(float fillday) {
-        this.fillday = fillday;
+    public void setFillDay(float fillDay) {
+        this.fillDay = fillDay;
     }
 
     public float getRevenue() {

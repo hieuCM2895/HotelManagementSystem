@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.List;
 
@@ -18,6 +19,7 @@ public class IncomeStat implements Serializable {
     private List<Bill> listOfBill;
 
     @Column(name = "period")
+    @NotBlank
     private String period;
 
     @Column(name = "revenue")

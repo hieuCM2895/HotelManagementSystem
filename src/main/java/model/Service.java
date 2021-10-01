@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -17,9 +18,11 @@ public class Service implements Serializable {
     private Set<UsedService> listOfUsedService;
 
     @Column(name = "name", nullable = false, length = 100)
+    @NotBlank
     private String name;
 
     @Column(name = "unity", nullable = false, length = 100)
+    @NotBlank
     private String unity;
 
     @Column(name = "price", nullable = false)

@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 @Entity
@@ -13,15 +14,19 @@ public class User implements Serializable {
     private int userId;
 
     @Column(name = "user_name", nullable = false, length = 50, unique = true)
+    @NotBlank
     private String userName;
 
     @Column(name = "password", nullable = false, length = 50)
+    @NotBlank
     private String password;
 
     @Column(name = "full_name", nullable = false, length = 100)
+    @NotBlank
     private String fullName;
 
     @Column(name = "position", nullable = false, length = 50)
+    @NotBlank
     private String position;
 
     public User() {

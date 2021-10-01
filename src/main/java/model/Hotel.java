@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -17,15 +18,18 @@ public class Hotel implements Serializable {
     private Set<Room> listOfRoom;
 
     @Column(name = "hotel_name", nullable = false, length = 50)
+    @NotBlank
     private String hotelName;
 
     @Column(name = "star_level", nullable = false, length = 50)
     private int starLevel;
 
     @Column(name = "address", nullable = false, length = 100)
+    @NotBlank
     private String address;
 
     @Column(name = "city", nullable = false, length = 50)
+    @NotBlank
     private String city;
 
     @Column(name = "description", length = 200)

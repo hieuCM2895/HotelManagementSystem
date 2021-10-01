@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -22,9 +23,11 @@ public class Room implements Serializable {
     private Set<BookedRoom> listOfBookedRoom;
 
     @Column(name = "name", nullable = false, unique = true, length = 20)
+    @NotBlank
     private String name;
 
     @Column(name = "type", nullable = false, length = 50)
+    @NotBlank
     private String type;
 
     @Column(name = "price", nullable = false)
