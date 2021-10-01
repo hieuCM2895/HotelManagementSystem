@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -28,6 +29,7 @@ public class Bill implements Serializable {
     private float totalAmount;
 
     @Column(name = "payment_type", nullable = false, length = 50)
+    @NotBlank
     private String paymentType;
 
     @Column(name = "prepay", nullable = false, length = 50)

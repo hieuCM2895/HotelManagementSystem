@@ -2,6 +2,7 @@ package model;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
@@ -15,20 +16,25 @@ public class Client implements Serializable {
     private int clientId;
 
     @Column(name = "full_name", nullable = false, length = 100)
+    @NotBlank
     private String fullName;
 
     @Column(name = "id_card", nullable = false, length = 50, unique = true)
+    @NotBlank
     private String idCard;
 
     @Column(name = "address", nullable = false, length = 200)
+    @NotBlank
     private String address;
 
     @Pattern(regexp = "(^$|[0-9]{10})", message = "Invalid number phone")
     @Column(name = "tell", nullable = false, length = 50, unique = true)
+    @NotBlank
     private String tell;
 
     @Email
     @Column(name = "email", nullable = false, length = 50, unique = true)
+    @NotBlank
     private String email;
 
     @Column(name = "note", length = 200)
