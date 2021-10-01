@@ -43,6 +43,7 @@ public abstract class AbstractDAO<T, K> {
             return (result != null);
         } catch (Exception ex) {
             ex.printStackTrace();
+            session.getTransaction().rollback();
         } finally {
             if (session != null) {
                 session.close();

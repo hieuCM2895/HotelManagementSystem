@@ -9,8 +9,8 @@ import java.util.List;
 
 public class ServiceHotel {
 
-    private ServiceDAOImpl serviceDAO = new ServiceDAOImpl();
-    private ServiceDTO serviceDTO = new ServiceDTO();
+    private final ServiceDAOImpl serviceDAO = new ServiceDAOImpl();
+    private final ServiceDTO serviceDTO = new ServiceDTO();
 
     public boolean insertNewService(Service service) {
         return serviceDAO.save(service);
