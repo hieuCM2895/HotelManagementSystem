@@ -8,8 +8,11 @@ public class SwitchCase {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Input check in");
+
+        System.out.println("Input check in");
         String checkin = scanner.nextLine();
         System.out.println(checkin);
+
 
     }
 }

@@ -13,7 +13,7 @@ public class ClientDTO {
         clientDTO.setTell(client.getTell());
         clientDTO.setNote(client.getNote());
         clientDTO.setAddress(client.getAddress());
-        clientDTO.setFullName(client.getFullName());
+        //clientDTO.setFullName(client.getFullName());
 
         return clientDTO;
 

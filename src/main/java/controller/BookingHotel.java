@@ -2,12 +2,14 @@ package controller;
 
 import model.Client;
 import model.Room;
-import model.Service;
 import model.User;
 import service.*;
 
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Scanner;
 
 public class BookingHotel {
 
@@ -29,6 +31,12 @@ public class BookingHotel {
         String dateFormat = "yyyy-MM-dd";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(dateFormat);
 
+        List<Integer> list = new ArrayList<>();
+        Scanner scanner = new Scanner(System.in);
+        int number = scanner.nextInt();
+        list.add(number);
+
+
         List<Room> listOfRoom = new ArrayList<>();
         Room room1 = roomService.findRoomById(1);
         Room room2 = roomService.findRoomById(2);
@@ -36,20 +44,26 @@ public class BookingHotel {
         listOfRoom.add(room2);
 
         Date checkin = simpleDateFormat.parse("2021-02-12");
-        Date checkout = simpleDateFormat.parse("2021-02-12");
-
-        Map<Room, Map<Service, Integer>> list = new HashMap<>();
-        Map<Service, Integer> service = new HashMap<>();
-        service.put(serviceHotel.findServiceById(1), 2);
-        list.put(room1, service);
-        list.put(room2, null);
+        Date checkout = simpleDateFormat.parse("2021-02-14");
 
 
-        boolean result = bookedRoomService.insertBookedRoomByTime(listOfRoom, checkin, checkout, user, client, "Chuyển khoản");
-        boolean result1 = bookedRoomService.insertBookedRoomByTime(list, checkin, checkout, user, client, "Chuyển khoản");
+        boolean result = bookedRoomService.insertBookedRoomByTime(listOfRoom, checkin, checkout, user,
+                client, "Chuyển khoản");
 
         if (result) System.out.println("Booked Room Successfully");
-        if (result1) System.out.println("Booked Room Successfully");
+
+//        Map<Room, Map<Service, Integer>> list = new HashMap<>();
+//        Map<Service, Integer> service = new HashMap<>();
+//        service.put(serviceHotel.findServiceById(1), 2);
+//        list.put(room1, service);
+//        list.put(room2, null);
+
+
+//        boolean result = bookedRoomService.insertBookedRoomByTime(listOfRoom, checkin, checkout, user, client, "Chuyển khoản");
+//        boolean result1 = bookedRoomService.insertBookedRoomByTime(list, checkin, checkout, user, client, "Chuyển khoản");
+
+//        if (result) System.out.println("Booked Room Successfully");
+//        if (result1) System.out.println("Booked Room Successfully");
 
     }
 
