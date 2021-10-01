@@ -3,6 +3,7 @@ package model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -107,12 +108,14 @@ public class Bill implements Serializable {
 
     @Override
     public String toString() {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
         return "Bill{" +
-                "billId=" + billId +
-                ", user=" + user +
-                ", paymentDate=" + paymentDate +
-                ", TotalAmount=" + totalAmount +
-                ", paymentType='" + paymentType + '\'' +
+                "billId = " + billId +
+                ", user = " + user.getFullName() +
+                ", paymentDate = " + simpleDateFormat.format(paymentDate) +
+                ", TotalAmount = " + totalAmount +
+                ", TotalAmount = " + prepay +
+                ", paymentType = '" + paymentType + '\'' +
                 ", note='" + note + '\'' +
                 '}';
     }

@@ -16,6 +16,6 @@ public interface IClientService {
 
     Client findClientById(int clientId);
 
-    Client findClientByName(int clientName);
+    Client findClientByName(String clientName);
 
 }

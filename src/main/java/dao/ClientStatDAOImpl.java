@@ -1,6 +1,6 @@
 package dao;
 
-import model.Booking;
+import dao.interfaces.IClientStatDAO;
 import model.ClientStat;
 import org.hibernate.Session;
 import util.HibernateUtils;
@@ -9,8 +9,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-public class ClientStatDAOImpl extends AbstractDAO<ClientStat, Object> {
+public class ClientStatDAOImpl extends AbstractDAO<ClientStat, Object> implements IClientStatDAO {
 
+    @Override
     public boolean findClientStatByClientId(int clientId) {
 
         Session session = HibernateUtils.getSessionFactory().openSession();
@@ -24,4 +25,5 @@ public class ClientStatDAOImpl extends AbstractDAO<ClientStat, Object> {
         return session.createQuery(criteriaQuery).getResultList().size() >= 1;
 
     }
+
 }

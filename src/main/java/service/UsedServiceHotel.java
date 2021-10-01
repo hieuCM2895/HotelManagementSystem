@@ -40,7 +40,9 @@ public class UsedServiceHotel {
 
     public List<UsedService> insertUsedServiceByListService(Map<Service, Integer> listOfService, BookedRoom bookedRoom) {
 
+        if (listOfService == null) return null;
         List<UsedService> listOfUsedService = new ArrayList<>();
+
         for (Map.Entry<Service, Integer> entry : listOfService.entrySet()) {
             UsedService usedService = new UsedService();
             usedService.setService(entry.getKey());
@@ -55,10 +57,11 @@ public class UsedServiceHotel {
 
     }
 
-    public float calculationAmountByUsedService(List<UsedService> listOfService) {
+    public float calculationAmountByUsedService(List<UsedService> listOfUsedService) {
 
+        if (listOfUsedService == null) return 0;
         float amount = 0;
-        for (UsedService usedService : listOfService) {
+        for (UsedService usedService : listOfUsedService) {
             amount += usedService.getTotalAmount();
         }
         return amount;

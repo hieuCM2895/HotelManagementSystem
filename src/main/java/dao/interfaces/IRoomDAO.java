@@ -91,4 +91,10 @@ public interface IRoomDAO {
      */
     List<Room> searchRoomByStar(String star, int minPrice, int maxPrice);
 
+    /**
+     * @param listOfNameRoom
+     * @return
+     */
+    List<Room> findRoomByListName(List<String> listOfNameRoom);
+
 }

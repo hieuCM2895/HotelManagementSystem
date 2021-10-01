@@ -5,15 +5,16 @@ import dto.BillDTO;
 import model.Bill;
 import model.Booking;
 import model.User;
+import service.interfaces.IBillService;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class BillService {
+public class BillService implements IBillService {
 
-    private BillDAOImpl billDAO = new BillDAOImpl();
-    private BillDTO billDTO = new BillDTO();
+    private final BillDAOImpl billDAO = new BillDAOImpl();
+    private final BillDTO billDTO = new BillDTO();
 
     public boolean insertNewBill(Bill bill) {
         return billDAO.save(bill);
@@ -36,6 +37,12 @@ public class BillService {
         }
         return listBillDTO;
 
+    }
+
+    public Bill findBillById(int billId) {
+
+        Bill bill = billDAO.findById(Bill.class, billId);
+        return billDTO.billDTO(bill);
     }
 
     public List<Bill> findBillByClientName(String clientName) {
@@ -79,11 +86,4 @@ public class BillService {
 
     }
 
-    public static void main(String[] args) {
-        BillService billService = new BillService();
-        List<Bill> list = billService.findBillByClientName("Cao Minh Hiếu");
-        for (Bill bill : list) {
-            System.out.println(bill);
-        }
-    }
 }

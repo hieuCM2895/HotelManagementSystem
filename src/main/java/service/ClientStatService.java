@@ -2,10 +2,12 @@ package service;
 
 import dao.ClientDAOImpl;
 import dao.ClientStatDAOImpl;
+import dto.ClientStatDTO;
 import model.Client;
 import model.ClientStat;
 import service.interfaces.IClientStatService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClientStatService implements IClientStatService {
@@ -13,11 +15,38 @@ public class ClientStatService implements IClientStatService {
     private final ClientStatDAOImpl clientStatDAO = new ClientStatDAOImpl();
     private final ClientDAOImpl clientDAO = new ClientDAOImpl();
     private final ClientService clientService = new ClientService();
+    private final ClientStatDTO clientStatDTO = new ClientStatDTO();
 
     @Override
-    public boolean saveNewClientStat(ClientStat clientStat) {
-
+    public boolean insertClientStat(ClientStat clientStat) {
         return clientStatDAO.save(clientStat);
+    }
+
+    @Override
+    public boolean deleteClientStat(ClientStat clientStat) {
+        return clientStatDAO.delete(clientStat);
+    }
+
+    @Override
+    public boolean updateClientStat(ClientStat clientStat) {
+        return clientStatDAO.update(clientStat);
+    }
+
+    @Override
+    public ClientStat findClientStatById(int clientId) {
+        return clientStatDTO.clientStatDTO(clientStatDAO.findById(ClientStat.class, clientId));
+    }
+
+    @Override
+    public List<ClientStat> findAllClientStat() {
+
+        List<ClientStat> clientStats = new ArrayList<>();
+        List<ClientStat> listOfClientStat = clientStatDAO.findAll(ClientStat.class);
+        for (ClientStat stat : listOfClientStat) {
+            clientStats.add(clientStatDTO.clientStatDTO(stat));
+        }
+        return clientStats;
+
     }
 
     @Override
@@ -50,10 +79,4 @@ public class ClientStatService implements IClientStatService {
 
     }
 
-    public static void main(String[] args) {
-
-        ClientStatService statService = new ClientStatService();
-        boolean result = statService.updateClientStatById();
-        System.out.println(result);
-    }
 }

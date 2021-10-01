@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-// Hiếu
+
 public class RoomDAOImpl extends AbstractDAO<Room, Object> implements IRoomDAO {
 
     @Override
@@ -216,7 +216,8 @@ public class RoomDAOImpl extends AbstractDAO<Room, Object> implements IRoomDAO {
 
     }
 
-    public static List<Room> findRoomByListName(List<String> listOfNameRoom) {
+    @Override
+    public List<Room> findRoomByListName(List<String> listOfNameRoom) {
 
         List<Room> listOfRoom = new ArrayList<>();
         Session session = HibernateUtils.getSessionFactory().openSession();
@@ -231,18 +232,6 @@ public class RoomDAOImpl extends AbstractDAO<Room, Object> implements IRoomDAO {
         }
 
         return listOfRoom;
-
-    }
-
-    public static void main(String[] args) {
-
-        List<String> list = new ArrayList<>();
-        list.add("103A");
-        list.add("102A");
-        List<Room> listOfRoom = findRoomByListName(list);
-        for (Room room : listOfRoom) {
-            System.out.println(room);
-        }
 
     }
 

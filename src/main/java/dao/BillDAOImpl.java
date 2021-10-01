@@ -1,5 +1,6 @@
 package dao;
 
+import dao.interfaces.IBillDAO;
 import model.Bill;
 import org.hibernate.Session;
 import util.HibernateUtils;
@@ -10,8 +11,9 @@ import javax.persistence.criteria.Root;
 import java.util.Date;
 import java.util.List;
 
-public class BillDAOImpl extends AbstractDAO<Bill, Object> {
+public class BillDAOImpl extends AbstractDAO<Bill, Object> implements IBillDAO {
 
+    @Override
     public List<Bill> findBillByClientName(String clientName) {
 
         Session session = HibernateUtils.getSessionFactory().openSession();
@@ -26,6 +28,7 @@ public class BillDAOImpl extends AbstractDAO<Bill, Object> {
 
     }
 
+    @Override
     public List<Bill> findBillByPayMentDate(Date date) {
 
         Session session = HibernateUtils.getSessionFactory().openSession();

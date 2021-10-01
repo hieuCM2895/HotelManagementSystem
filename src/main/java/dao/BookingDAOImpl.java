@@ -1,5 +1,6 @@
 package dao;
 
+import dao.interfaces.IBookingDAO;
 import model.Booking;
 import org.hibernate.Session;
 import util.HibernateUtils;
@@ -10,8 +11,9 @@ import javax.persistence.criteria.Root;
 import java.util.Date;
 import java.util.List;
 
-public class BookingDAOImpl extends AbstractDAO<Booking, Object> {
+public class BookingDAOImpl extends AbstractDAO<Booking, Object> implements IBookingDAO {
 
+    @Override
     public List<Booking> findBookingByClientName(String clientName) {
 
         Session session = HibernateUtils.getSessionFactory().openSession();
@@ -26,6 +28,7 @@ public class BookingDAOImpl extends AbstractDAO<Booking, Object> {
 
     }
 
+    @Override
     public List<Booking> findBookingByUserName(String userName) {
 
         Session session = HibernateUtils.getSessionFactory().openSession();
@@ -40,6 +43,7 @@ public class BookingDAOImpl extends AbstractDAO<Booking, Object> {
 
     }
 
+    @Override
     public List<Booking> findBookingByDate(Date date) {
 
         Session session = HibernateUtils.getSessionFactory().openSession();

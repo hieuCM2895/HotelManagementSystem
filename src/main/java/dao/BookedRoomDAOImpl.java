@@ -6,7 +6,10 @@ import model.Room;
 import org.hibernate.Session;
 import util.HibernateUtils;
 
-import javax.persistence.criteria.*;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.Date;
 import java.util.List;
 // Hiếu
@@ -50,6 +53,5 @@ public class BookedRoomDAOImpl extends AbstractDAO<BookedRoom, Object> implement
         return session.createQuery(criteriaQuery).getResultList();
 
     }
-
 
 }

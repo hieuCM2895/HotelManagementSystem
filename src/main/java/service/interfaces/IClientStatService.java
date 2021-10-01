@@ -2,17 +2,22 @@ package service.interfaces;
 
 import model.ClientStat;
 
+import java.util.List;
+
 public interface IClientStatService {
 
-    /**
-     * Create new client stat to statistic
-     *
-     * @param clientStat
-     */
-    boolean saveNewClientStat(ClientStat clientStat);
+    boolean insertClientStat(ClientStat clientStat);
+
+    boolean deleteClientStat(ClientStat clientStat);
+
+    boolean updateClientStat(ClientStat clientStat);
+
+    List<ClientStat> findAllClientStat();
+
+    ClientStat findClientStatById(int clientId);
 
     /**
-     * Update client statistic when customer check out
+     * Update client stat.
      *
      * @return
      */

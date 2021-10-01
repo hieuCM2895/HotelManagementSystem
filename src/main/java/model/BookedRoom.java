@@ -133,13 +133,12 @@ public class BookedRoom implements Serializable {
         return "BookedRoom{" +
                 "bookedRoomId=" + bookedRoomId +
                 ", booking=" + booking +
-                ", room=" + room +
+                ", room=" + room.getName() +
                 ", checkin=" + checkin +
                 ", checkout=" + checkout +
                 ", price=" + price +
                 ", note='" + note + '\'' +
                 ", amount=" + amount +
-                ", isCheckIn=" + isCheckIn +
                 '}';
     }
 }

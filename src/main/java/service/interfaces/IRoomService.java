@@ -34,4 +34,6 @@ public interface IRoomService {
 
     List<Room> checkRoomEmptyByNameHotel(Date checkin, Date checkout, String hotelName);
 
+    List<Room> findRoomByListName(List<String> listOfNameRoom);
+
 }

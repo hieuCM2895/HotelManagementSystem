@@ -1,8 +1,8 @@
 package dao;
 
+import dao.interfaces.IClientDAO;
 import model.Booking;
 import model.Client;
-import model.Room;
 import org.hibernate.Session;
 import util.HibernateUtils;
 
@@ -11,8 +11,9 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-public class ClientDAOImpl extends AbstractDAO<Client, Object> {
+public class ClientDAOImpl extends AbstractDAO<Client, Object> implements IClientDAO {
 
+    @Override
     public List<Object[]> findProfitFromCustomers() {
 
         // select sum(b.total_amount) from booking b group by b.client_id
@@ -28,6 +29,20 @@ public class ClientDAOImpl extends AbstractDAO<Client, Object> {
 
         return session.createQuery(criteriaQuery).getResultList();
 
+    }
+
+    @Override
+    public Client findClientByName(String clientName) {
+
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Client> criteriaQuery = builder.createQuery(Client.class);
+
+        Root<Client> root = criteriaQuery.from(Client.class);
+
+        criteriaQuery.select(root).where(builder.like(root.get("fullName"), clientName));
+
+        return session.createQuery(criteriaQuery).getSingleResult();
     }
 
 }

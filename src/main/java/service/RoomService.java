@@ -142,4 +142,16 @@ public class RoomService implements IRoomService {
         return listOfRoom;
 
     }
+
+    @Override
+    public List<Room> findRoomByListName(List<String> listOfNameRoom) {
+
+        List<Room> listOfRoom = roomDAO.findRoomByListName(listOfNameRoom);
+        List<Room> listRoomDTO = new ArrayList<>();
+        for (Room room : listOfRoom) {
+            listRoomDTO.add(roomDTO.roomDTO(room));
+        }
+        return listOfRoom;
+
+    }
 }

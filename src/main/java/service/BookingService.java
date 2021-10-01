@@ -6,12 +6,13 @@ import model.BookedRoom;
 import model.Booking;
 import model.Client;
 import model.User;
+import service.interfaces.IBookingService;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class BookingService {
+public class BookingService implements IBookingService {
 
     private final BookingDAOImpl bookingDAO = new BookingDAOImpl();
     private final BookingDTO bookingDTO = new BookingDTO();
@@ -27,6 +28,10 @@ public class BookingService {
 
     public boolean deleteBooking(Booking booking) {
         return bookingDAO.delete(booking);
+    }
+
+    public Booking findBookingById(int bookingId) {
+        return bookingDTO.bookingDTO(bookingDAO.findById(Booking.class, bookingId));
     }
 
     public List<Booking> findAllBooking() {
